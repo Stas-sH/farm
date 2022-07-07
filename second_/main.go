@@ -23,9 +23,9 @@ func(co Cow) weight()int{return co.wweight}
 func(c Cat) weight()int{return c.wweight}
 func(d Dog) weight()int{return d.wweight}
 
-func (Cow) name() string{return "Cow:"}
-func (Cat) name() string{return "Cat:"}
-func (Dog) name() string{return "Dog:"}
+func (Cow) String() string{return "Cow:"}
+func (Cat) String() string{return "Cat:"}
+func (Dog) String() string{return "Dog:"}
 
 
 func (co Cow) food() int {
@@ -43,16 +43,16 @@ func (d Dog) food() int {
 
 type consumption interface {
 	food() int
-	name() string
+	String() string
 	weight() int
 	count() int
 }
 
 func about(x consumption, totaly *int) {
-	fmt.Printf("Animal name %v with weight %vkg must eat %vkg food \n",x.name(),x.weight(),x.food())
-	fmt.Printf("Total for %v = %vkg \n",x.name(),(x.count() * x.food()))
+	fmt.Printf("Animal name %v with weight %vkg must eat %vkg food \n",x.String(),x.weight(),x.food())
+	fmt.Printf("Total for %v = %vkg \n",x.String(),(x.count() * x.food()))
 	*totaly=(*totaly+(x.count() * x.food()))
-	fmt.Printf("Minimum food in farm: %vkg", *totaly)
+	fmt.Printf("Minimum food in farm: %vkg\n", *totaly)
 }
 
 func main() {
